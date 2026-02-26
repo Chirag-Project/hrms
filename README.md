@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ---
 # 🚀 HRMS Lite – Full Stack Application
@@ -226,3 +227,6 @@ GitHub: [https://github.com/Asmitagupta07](https://github.com/Asmitagupta07)
 
 
 
+=======
+# hrms
+>>>>>>> 627888762fa7cdfa6247cba7cc4bd5dcae81c495
