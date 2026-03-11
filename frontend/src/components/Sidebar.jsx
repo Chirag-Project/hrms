@@ -4,59 +4,101 @@ import { FaTachometerAlt, FaUsers, FaClipboardCheck } from "react-icons/fa";
 function Sidebar() {
   return (
     <div style={styles.sidebar}>
-      <h2 style={styles.title}>HRMS Lite</h2>
+      <div>
+        <h2 style={styles.title}>HRMS</h2>
 
-      <nav style={styles.nav}>
-        <NavLink to="/" style={styles.link} end>
-          Dashboard
-        </NavLink>
+        <nav style={styles.nav}>
+          <NavLink to="/" style={styles.link} end>
+            <FaTachometerAlt style={styles.icon} />
+            Dashboard
+          </NavLink>
 
-        <NavLink to="/employees" style={styles.link}>
-          Employees
-        </NavLink>
+          <NavLink to="/employees" style={styles.link}>
+            <FaUsers style={styles.icon} />
+            Employees
+          </NavLink>
 
-        <NavLink to="/attendance" style={styles.link}>
-          Attendance
-        </NavLink>
-      </nav>
+          <NavLink to="/attendance" style={styles.link}>
+            <FaClipboardCheck style={styles.icon} />
+            Attendance
+          </NavLink>
+        </nav>
+      </div>
     </div>
   );
 }
 
 const styles = {
   sidebar: {
-    width: "240px",
+    width: "260px",
     height: "100vh",
-    background: "#1E293B",
-    color: "white",
+    background: "linear-gradient(180deg,#1E293B,#020617)",
     padding: "30px 20px",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
+    color: "white",
   },
+
   title: {
-    fontSize: "22px",
+    fontSize: "24px",
     fontWeight: "700",
     marginBottom: "40px",
-    textAlign: "center",
+    letterSpacing: "1px",
   },
+
   nav: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    gap: "8px",
   },
+
   link: ({ isActive }) => ({
     display: "flex",
     alignItems: "center",
-    gap: "12px",
-    padding: "12px 15px",
-    borderRadius: "8px",
-    color: isActive ? "#FFFFFF" : "#CBD5E1",
-    background: isActive ? "#2563EB" : "transparent",
+    gap: "14px",
+    padding: "12px 16px",
+    borderRadius: "10px",
     textDecoration: "none",
     fontSize: "15px",
-    transition: "0.3s",
+    color: isActive ? "#0F172A" : "#CBD5F5",
+    background: isActive ? "#E2E8F0" : "transparent",
+    borderLeft: isActive ? "4px solid #6366F1" : "4px solid transparent",
+    transition: "all 0.25s ease",
   }),
+
   icon: {
     fontSize: "18px",
+  },
+
+  profile: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    borderTop: "1px solid rgba(255,255,255,0.1)",
+    paddingTop: "20px",
+  },
+
+  avatar: {
+    width: "38px",
+    height: "38px",
+    borderRadius: "50%",
+    background: "#6366F1",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "600",
+  },
+
+  name: {
+    fontSize: "14px",
+    margin: 0,
+  },
+
+  role: {
+    fontSize: "12px",
+    opacity: 0.7,
+    margin: 0,
   },
 };
 

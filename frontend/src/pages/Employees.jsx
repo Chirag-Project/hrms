@@ -27,67 +27,60 @@ function Employees() {
     fetchEmployees();
   }, []);
 
-  // Filtering Logic
   useEffect(() => {
     let filtered = employees;
 
     if (searchName) {
-      filtered = filtered.filter(emp =>
+      filtered = filtered.filter((emp) =>
         emp.full_name.toLowerCase().includes(searchName.toLowerCase())
       );
     }
 
     if (filterDepartment) {
-      filtered = filtered.filter(emp =>
-        emp.department === filterDepartment
+      filtered = filtered.filter(
+        (emp) => emp.department === filterDepartment
       );
     }
 
     setFilteredEmployees(filtered);
   }, [searchName, filterDepartment, employees]);
 
-  // Get unique departments
-  const departments = [...new Set(employees.map(emp => emp.department))];
+  const departments = [...new Set(employees.map((emp) => emp.department))];
 
   return (
-    <div className="page-container">
-     
+    <div style={styles.page}>
+      <h1 style={styles.title}>Employee Management</h1>
 
-      <div className="card">
-         <h1>Employee Management</h1>
+      {/* Add Employee */}
+      <div style={styles.card}>
         <EmployeeForm refreshEmployees={fetchEmployees} />
       </div>
 
-     
+      {/* Filter + List */}
+      <div style={styles.card}>
+        <div style={styles.filterRow}>
+          <input
+            type="text"
+            placeholder="🔍 Search employee..."
+            value={searchName}
+            style={styles.input}
+            onChange={(e) => setSearchName(e.target.value)}
+          />
 
-      <div className="card">
-         {/* Filter Section */}
-      <div style={styles.filter}>
-        <h3>Filter Employees</h3>
+          <select
+            value={filterDepartment}
+            style={styles.input}
+            onChange={(e) => setFilterDepartment(e.target.value)}
+          >
+            <option value="">All Departments</option>
+            {departments.map((dept, index) => (
+              <option key={index} value={dept}>
+                {dept}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <input
-          type="text"
-          placeholder="Search by name"
-          value={searchName}
-          style={styles.date_input}
-          onChange={(e) => setSearchName(e.target.value)}
-        />
-
-        <br /><br />
-
-        <select
-          value={filterDepartment}
-          style={styles.date_input}
-          onChange={(e) => setFilterDepartment(e.target.value)}
-        >
-          <option value="">All Departments</option>
-          {departments.map((dept, index) => (
-            <option key={index} value={dept}>
-              {dept}
-            </option>
-          ))}
-        </select>
-      </div>
         <EmployeeList
           employees={filteredEmployees}
           refreshEmployees={fetchEmployees}
@@ -97,18 +90,43 @@ function Employees() {
     </div>
   );
 }
+
 const styles = {
-
-  filter: {
-    display: "flex",
-    float:"right"
+  page: {
+    background: "#F1F5F9",
+    minHeight: "100vh",
   },
-  date_input: {
-    padding: 0,
-    width: 120,
-    height: 35,
-    margin: "10px"
-  }
-}
-export default Employees;
 
+  title: {
+    fontSize: "28px",
+    fontWeight: "700",
+    marginBottom: "25px",
+    color: "#0F172A",
+  },
+
+  card: {
+    background: "#FFFFFF",
+    padding: "25px",
+    borderRadius: "12px",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.05)",
+    marginBottom: "25px",
+  },
+
+  filterRow: {
+    display: "flex",
+    gap: "15px",
+    marginBottom: "20px",
+    justifyContent: "space-between",
+  },
+
+  input: {
+    padding: "10px 12px",
+    borderRadius: "8px",
+    border: "1px solid #CBD5E1",
+    fontSize: "14px",
+    minWidth: "220px",
+    outline: "none",
+  },
+};
+
+export default Employees;

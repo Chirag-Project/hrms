@@ -73,51 +73,60 @@ function EmployeeList({ employees, refreshEmployees, loading }) {
 
 const styles = {
   container: {
-    background: "#ffffff",
+    background: "#FFFFFF",
     padding: "25px",
     borderRadius: "12px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.05)",
     marginTop: "20px",
+    border: "1px solid #E5E7EB",
   },
+
   heading: {
     marginBottom: "20px",
-    color: "#2c3e50",
+    color: "#1F2937",
     fontSize: "22px",
     fontWeight: "600",
   },
+
   tableWrapper: {
     overflowX: "auto",
   },
+
   table: {
     width: "100%",
     borderCollapse: "collapse",
   },
+
   th: {
-    backgroundColor: "#f4f6f9",
+    backgroundColor: "#EEF2FF",
     padding: "12px",
     textAlign: "left",
     fontSize: "14px",
-    color: "#34495e",
-    borderBottom: "2px solid #e0e6ed",
+    color: "#374151",
+    borderBottom: "2px solid #E5E7EB",
   },
+
   tr: {
-    borderBottom: "1px solid #eaeaea",
+    borderBottom: "1px solid #F1F5F9",
   },
+
   td: {
     padding: "12px",
     fontSize: "14px",
-    color: "#555",
+    color: "#4B5563",
   },
+
   badge: {
-    backgroundColor: "#e3f2fd",
-    color: "#1976d2",
-    padding: "5px 10px",
+    backgroundColor: "#E0E7FF",
+    color: "#4338CA",
+    padding: "5px 12px",
     borderRadius: "20px",
     fontSize: "12px",
     fontWeight: "500",
   },
+
   deleteBtn: {
-    backgroundColor: "#ff4d4f",
+    backgroundColor: "#EF4444",
     color: "#fff",
     border: "none",
     padding: "6px 12px",
@@ -125,10 +134,11 @@ const styles = {
     cursor: "pointer",
     fontSize: "13px",
   },
+
   messageCell: {
     textAlign: "center",
     padding: "20px",
-    color: "#777",
+    color: "#6B7280",
     fontSize: "15px",
   },
 };

@@ -34,11 +34,13 @@ function AttendanceForm({ refreshAttendance }) {
 
     try {
       await API.post("attendance/", formData);
+
       setFormData({
         employee: "",
         date: "",
         status: "Present"
       });
+
       refreshAttendance();
     } catch (error) {
       if (error.response && error.response.data) {
@@ -61,25 +63,40 @@ function AttendanceForm({ refreshAttendance }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "#f4f6f9"
+        background: "#EEF2FF"
       }}
     >
       <form
         onSubmit={handleSubmit}
         style={{
-          background: "#ffffff",
+          background: "#FFFFFF",
           padding: "30px 40px",
-          borderRadius: "8px",
-          boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-          width: "350px"
+          borderRadius: "10px",
+          boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+          width: "350px",
+          border: "1px solid #E5E7EB"
         }}
       >
-        <h3 style={{ textAlign: "center", marginBottom: "20px" }}>
+        <h3
+          style={{
+            textAlign: "center",
+            marginBottom: "20px",
+            color: "#1F2937"
+          }}
+        >
           Mark Attendance
         </h3>
 
         {error && (
-          <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+          <p
+            style={{
+              color: "#DC2626",
+              textAlign: "center",
+              fontSize: "14px"
+            }}
+          >
+            {error}
+          </p>
         )}
 
         <select
@@ -121,12 +138,13 @@ function AttendanceForm({ refreshAttendance }) {
           style={{
             width: "100%",
             padding: "10px",
-            background: "#4a90e2",
+            background: "#6366F1",
             color: "#fff",
             border: "none",
-            borderRadius: "5px",
+            borderRadius: "6px",
             cursor: "pointer",
-            marginTop: "10px"
+            marginTop: "10px",
+            fontWeight: "500"
           }}
         >
           Mark Attendance
@@ -138,10 +156,11 @@ function AttendanceForm({ refreshAttendance }) {
 
 const inputStyle = {
   width: "100%",
-  padding: "8px",
+  padding: "9px",
   marginBottom: "12px",
-  borderRadius: "4px",
-  border: "1px solid #ccc"
+  borderRadius: "6px",
+  border: "1px solid #D1D5DB",
+  outline: "none"
 };
 
 export default AttendanceForm;

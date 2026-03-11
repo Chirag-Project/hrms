@@ -34,7 +34,6 @@ function Attendance() {
     fetchEmployees();
   }, []);
 
-  // Filtering Logic
   useEffect(() => {
     let filtered = attendanceRecords;
 
@@ -54,42 +53,39 @@ function Attendance() {
   }, [filterDate, filterEmployee, attendanceRecords]);
 
   return (
-    <div className="page-container">
-      
-
-      <div className="card">
-        <h1>ATTENDANCE</h1>
+    <div style={styles.page}>
+      <div style={styles.card}>
+        <h1 style={styles.title}>Attendance</h1>
         <AttendanceForm refreshAttendance={fetchAttendance} />
       </div>
 
-      {/* Filter Section */}
-      <div className="card">
-        
-        <div style={styles.filter}>
-          <h3 class="float_left">Filter Attendance</h3>
-        
-        <input class="date_input"
-          type="date"
-          value={filterDate}
-          style={styles.date_input}
-          onChange={(e) => setFilterDate(e.target.value)}
-        />
+      <div style={styles.card}>
+        <div style={styles.filterContainer}>
+          <h3 style={styles.filterTitle}>Filter Attendance</h3>
 
-        <br /><br />
+          <div style={styles.filterInputs}>
+            <input
+              type="date"
+              value={filterDate}
+              style={styles.input}
+              onChange={(e) => setFilterDate(e.target.value)}
+            />
 
-        <select
-          value={filterEmployee}
-          style={styles.date_input}
-          onChange={(e) => setFilterEmployee(e.target.value)}
-        >
-          <option value="">All Employees</option>
-          {employees.map(emp => (
-            <option key={emp.id} value={emp.id}>
-              {emp.full_name}
-            </option>
-          ))}
-        </select>
+            <select
+              value={filterEmployee}
+              style={styles.input}
+              onChange={(e) => setFilterEmployee(e.target.value)}
+            >
+              <option value="">All Employees</option>
+              {employees.map((emp) => (
+                <option key={emp.id} value={emp.id}>
+                  {emp.full_name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
+
         <AttendanceList
           attendanceRecords={filteredRecords}
           loading={loading}
@@ -98,18 +94,51 @@ function Attendance() {
     </div>
   );
 }
+
 const styles = {
-
-  filter: {
-    display: "flex",
-    float:"right"
+  page: {
+    background: "#F8FAFC",
+    minHeight: "100vh",
   },
-  date_input: {
-    padding: 0,
-    width: 120,
-    height: 35,
-    margin: "10px"
-  }
-}
-export default Attendance;
 
+  card: {
+    background: "#FFFFFF",
+    padding: "25px",
+    borderRadius: "12px",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.05)",
+    marginBottom: "25px",
+    border: "1px solid #E5E7EB",
+  },
+
+  title: {
+    fontSize: "26px",
+    marginBottom: "20px",
+    color: "#1F2937",
+  },
+
+  filterContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "20px",
+  },
+
+  filterTitle: {
+    fontSize: "18px",
+    color: "#374151",
+  },
+
+  filterInputs: {
+    display: "flex",
+    gap: "10px",
+  },
+
+  input: {
+    padding: "8px 10px",
+    borderRadius: "6px",
+    border: "1px solid #D1D5DB",
+    fontSize: "14px",
+  },
+};
+
+export default Attendance;
